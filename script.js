@@ -14,8 +14,18 @@ function getComputerChoice(initialNumber) {
 let number = 10;
 getComputerChoice(number);
 
-function getHumanChoice(input) {
-    prompt("Rock, Paper, Scissors");
+function getHumanChoice() {
+
+    while(true) {
+    const status = prompt("rock, paper, scissors");
+    if (status === "rock" || status === "paper" || status === "scissors") {
+        return console.log(status);
+    } else {
+     alert("not a valid option, please try again");
+    }
 }
-let input;
-getHumanChoice(input);
+}
+getHumanChoice();
+
+humanScore = 0;
+computerScore = 0;

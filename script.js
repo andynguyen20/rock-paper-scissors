@@ -8,8 +8,7 @@ function getComputerChoice() {
         return "scissors";
     }
 }
-let computerChoice = getComputerChoice();
-console.log(computerChoice);
+
 
 function getHumanChoice() {
     while(true) {
@@ -21,21 +20,37 @@ function getHumanChoice() {
     }
 }
 }
-let humanChoice = getHumanChoice();
-console.log(humanChoice);
 
-humanScore = 0;
-computerScore = 0;
 
-function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-        alert ("Tie!! No one gets a point");
-    } else if (humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper" && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper") {
-        alert ("You win. +1 point.");
-        humanScore += 1;
-    } else 
-        alert ("You lose. +1 point for computer.")
-        computerScore += 1;
+function playGame () {
+    let humanScore = 0;
+    let computerScore = 0;
+    function playRound(humanChoice, computerChoice) {
+        if (humanChoice === computerChoice) {
+            alert("Tie, nobody gets a point");
+        } else if (humanChoice === "rock" && computerChoice === "scissors" || humanChoice === "paper" && computerChoice === "rock" || humanChoice === "scissors" && computerChoice === "paper") {
+            alert("You win!! +1 point");
+            humanScore++;
+        } else {
+            alert("You lost. +1 point for Computer");
+            computerScore++;
+        }
 }
 
-let outcome = playRound(humanChoice, computerChoice);
+    while (humanScore < 5 && computerScore < 5) {
+        const humanChoice = getHumanChoice(); 
+        const computerChoice = getComputerChoice(); 
+    
+        playRound(humanChoice, computerChoice); 
+    
+        console.log(`Current Score - Human: ${humanScore}, Computer: ${computerScore}`);
+    }
+
+    if (humanScore === 5) {
+        console.log("Congratulations! You won the game!");
+    } else if (computerScore === 5) {
+        console.log("Computer wins the game! Better luck next time.");
+    }
+}
+
+playGame();
